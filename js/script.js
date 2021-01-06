@@ -40,7 +40,12 @@ function renderTodos(todos) {
   // Insert each item to DOM
   todos.forEach(function(item){
     const li = document.createElement('li');
-    li.innerHTML = item.name
+    // Check if the task is completed
+    const checked = item.completed ? 'checked': null;
+    // li.innerHTML = `<input class="checkbox" type="checkbox">${item.name}`;
+    li.innerHTML = `<input type="checkbox" class="checkbox" ${checked}>${item.name}<button class="delete-button">X</button>`;
+    
+    li.setAttribute('data-key', item.id);
     todoItemsList.append(li);
   });
 }
